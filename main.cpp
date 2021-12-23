@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<Backend>("example", 1, 0, "Backend");
+    qmlRegisterType<Backend>("backend", 1, 0, "Backend");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

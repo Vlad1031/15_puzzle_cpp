@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import example 1.0
+import backend 1.0
 
 GridView{
     id: root
@@ -20,6 +20,24 @@ GridView{
             anchors.margins: 3
             width: cellWidth
             height: cellHeight
+        }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                console.log(index)
+                console.log(root.model.move(index))
+            }
+        }
+    }
+
+    move: transit
+    displaced: transit
+
+    Transition {
+        id: transit
+        NumberAnimation{
+            properties: "x, y"
+            duration: 200
         }
     }
 }

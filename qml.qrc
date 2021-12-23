@@ -3,5 +3,7 @@
         <file>main.qml</file>
         <file>GameBoard.qml</file>
         <file>Tile.qml</file>
+        <file>ButtonMix.qml</file>
+        <file>MyPopup.qml</file>
     </qresource>
 </RCC>
