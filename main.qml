@@ -13,6 +13,7 @@ ApplicationWindow{
     minimumHeight: 350
 
     GameBoard{
+        id: grid
         anchors.fill: parent
         anchors.margins: 50
         clip: true
@@ -21,7 +22,7 @@ ApplicationWindow{
     ButtonMix{
         onPressed: {
             rectColor = "#FF0000"
-            root.model.shaffle()
+            grid.mixButton.shaffle()
         }
         onReleased: { rectColor = "#FFA500" }
     }

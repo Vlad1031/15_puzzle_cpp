@@ -4,10 +4,10 @@ import backend 1.0
 
 Button{
     id: root
-    property alias rectColor: rect_but.color
+    property alias rectColor: rect.color
 
     background: Rectangle{
-        id: rect_but
+        id: rect
         implicitWidth: 90
         implicitHeight: 40
         color: "#FFA500"
@@ -16,12 +16,13 @@ Button{
         anchors.fill: parent
         radius: 5
         Text{
-            anchors.centerIn: rect_but
+            anchors.centerIn: rect
             text: "MIX"
             font.pixelSize: 35
             font.bold: true
         }
     }
+
     anchors.margins: 5
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottom: parent.bottom

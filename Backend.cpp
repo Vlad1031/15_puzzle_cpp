@@ -21,6 +21,7 @@ void Backend::shaffle()
     do{
         shuffle(m_board.begin(), m_board.end(), generator);
     } while(!BoardValid());
+    qDebug() << "shaffle:" << m_board;
 }
 
 bool Backend::BoardValid() const
@@ -65,7 +66,7 @@ bool Backend::neighboring(int index, int idx){
 
 bool Backend::move(int index){
     int idx = 0;
-    while (m_board[idx] != MAX_SIZE) {
+    while (m_board[idx] != MAX_SIZE){
         idx++;
     }
 

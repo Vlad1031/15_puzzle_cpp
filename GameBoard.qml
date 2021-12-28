@@ -3,11 +3,16 @@ import backend 1.0
 
 GridView{
     id: root
+    property alias mixButton: back
+
     cellHeight: height / 4
     cellWidth: width / 4
     anchors.margins: 5
     interactive: false
-    model: Backend {}
+
+    model: Backend {
+        id: back
+    }
 
     delegate: Item{
         id: backgroundDelegate

@@ -11,7 +11,6 @@ Popup{
         text: "You win"
         font.pointSize: 25
         font.bold: true
-
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
     }
