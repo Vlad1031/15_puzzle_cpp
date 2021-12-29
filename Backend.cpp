@@ -20,8 +20,11 @@ void Backend::shaffle()
 
     do{
         shuffle(m_board.begin(), m_board.end(), generator);
+        emit dataChanged(createIndex(0, 0), createIndex(15, 0));
+
     } while(!BoardValid());
     qDebug() << "shaffle:" << m_board;
+
 }
 
 bool Backend::BoardValid() const
@@ -52,36 +55,54 @@ int Backend::FindZero() const{
     }
 }
 
-bool Backend::neighboring(int index, int idx){
-    if(index % 4 < 3 && index + 1 == idx)
+bool Backend::neighboring(int from, int to){
+    if(from % 4 < 3 && from + 1 == to)
         return true;
-    if(index % 4 > 0 && index - 1 == idx)
+    if(from % 4 > 0 && from - 1 == to)
         return true;
-    if(index < 12 && index + 4 == idx)
+    if(from < 12 && from + 4 == to)
         return true;
-    if(index >= 4 && index - 4 == idx)
+    if(from >= 4 && from - 4 == to)
         return true;
     return false;
 }
 
-bool Backend::move(int index){
-    int idx = 0;
-    while (m_board[idx] != MAX_SIZE){
-        idx++;
+bool Backend::move(int from){
+    int to = 0;
+    while (m_board[to] != MAX_SIZE){
+        to++;
     }
 
-    if(neighboring(index, idx)){
-        m_board.move(idx, index);
-        m_board.move(index, idx);
+    if(neighboring(from, to)){
+        m_board.move(from, to);
+        if(from > to){
+            beginMoveRows(QModelIndex(), from, from, QModelIndex(), to);
+            endMoveRows();
+            if(to < from && to < from - 1){
+                beginMoveRows(QModelIndex(), to + 1, to + 1, QModelIndex(), from + 1); // left
+                endMoveRows();
+            }
+            m_board.move(to + 1, from);
+        }
+
+        else{
+            beginMoveRows(QModelIndex(), from, from, QModelIndex(), to + 1);
+            endMoveRows();
+            if(to > from && to > from + 1){
+                beginMoveRows(QModelIndex(), to - 1, to - 1, QModelIndex(), from); // right
+                endMoveRows();
+            }
+            m_board.move(to - 1, from);
+        }
         return true;
     }
-    else{
+    else {
         return false;
     }
 }
 
-bool Backend::popup(){
-    for(int i = 0; i < 15; i++){
+bool Backend::win(){
+    for(int i = 0; i < MAX_SIZE - 1; i++){
         if(m_board[i] != i + 1){
             return false;
         }
@@ -107,3 +128,17 @@ QVariant Backend::data(const QModelIndex &index, int role) const
     }
     return QVariant();
 }
+
+//        m_board.move(from + 1, to); // right
+//        m_board.move(from - 1, to); // left
+//        m_board.move(from, to - 1); // down
+//        m_board.move(from, to + 1); // up
+
+
+//m_board.move(from, to);
+//if(from > to){
+//    m_board.move(to + 1, from);
+//}
+//else{
+//    m_board.move(to - 1, from);
+//}

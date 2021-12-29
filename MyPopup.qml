@@ -3,6 +3,7 @@ import QtQuick.Controls 2.4
 
 Popup{
     id: popup
+    property alias winPopup: myPopup
     anchors.centerIn: parent
     focus: true
     dim: true
@@ -16,6 +17,7 @@ Popup{
     }
 
     background: Rectangle {
+        id: myPopup
         border.width: 5
         radius: 15
         gradient: Gradient {

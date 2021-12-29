@@ -18,11 +18,9 @@ public:
     Q_INVOKABLE void shaffle();
     Q_INVOKABLE bool BoardValid() const;
     int FindZero() const;
-    Q_INVOKABLE bool neighboring(int index, int idx);
-    Q_INVOKABLE bool move(int index);
-    Q_INVOKABLE bool popup();
-
-    bool PositionValid(const size_t position) const;
+    Q_INVOKABLE bool neighboring(int from, int to);
+    Q_INVOKABLE bool move(int from);
+    Q_INVOKABLE bool win();
 private:
     QList<int> m_board;
 };

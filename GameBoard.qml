@@ -3,7 +3,8 @@ import backend 1.0
 
 GridView{
     id: root
-    property alias mixButton: back
+    property alias mixButton: backend
+//    property alias myPopup: backend
 
     cellHeight: height / 4
     cellWidth: width / 4
@@ -11,7 +12,7 @@ GridView{
     interactive: false
 
     model: Backend {
-        id: back
+        id: backend
     }
 
     delegate: Item{
@@ -29,8 +30,7 @@ GridView{
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                console.log(index)
-                console.log(root.model.move(index))
+                root.model.move(index)
             }
         }
     }

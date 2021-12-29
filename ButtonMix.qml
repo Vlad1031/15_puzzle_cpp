@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.4
 import backend 1.0
-
+//сигнал на view щоб змінила
 Button{
     id: root
     property alias rectColor: rect.color
