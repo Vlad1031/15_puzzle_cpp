@@ -21,7 +21,6 @@ void Backend::shaffle()
     do{
         shuffle(m_board.begin(), m_board.end(), generator);
         emit dataChanged(createIndex(0, 0), createIndex(15, 0));
-
     } while(!BoardValid());
     qDebug() << "shaffle:" << m_board;
 
@@ -128,17 +127,3 @@ QVariant Backend::data(const QModelIndex &index, int role) const
     }
     return QVariant();
 }
-
-//        m_board.move(from + 1, to); // right
-//        m_board.move(from - 1, to); // left
-//        m_board.move(from, to - 1); // down
-//        m_board.move(from, to + 1); // up
-
-
-//m_board.move(from, to);
-//if(from > to){
-//    m_board.move(to + 1, from);
-//}
-//else{
-//    m_board.move(to - 1, from);
-//}

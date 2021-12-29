@@ -4,7 +4,6 @@ import backend 1.0
 GridView{
     id: root
     property alias mixButton: backend
-//    property alias myPopup: backend
 
     cellHeight: height / 4
     cellWidth: width / 4
