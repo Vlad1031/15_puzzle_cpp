@@ -23,7 +23,6 @@ void Backend::shaffle()
         emit dataChanged(createIndex(0, 0), createIndex(15, 0));
     } while(!BoardValid());
     qDebug() << "shaffle:" << m_board;
-
 }
 
 bool Backend::BoardValid() const
@@ -78,7 +77,7 @@ bool Backend::move(int from){
             beginMoveRows(QModelIndex(), from, from, QModelIndex(), to);
             endMoveRows();
             if(to < from && to < from - 1){
-                beginMoveRows(QModelIndex(), to + 1, to + 1, QModelIndex(), from + 1); // left
+                beginMoveRows(QModelIndex(), to + 1, to + 1, QModelIndex(), from + 1);
                 endMoveRows();
             }
             m_board.move(to + 1, from);
@@ -88,7 +87,7 @@ bool Backend::move(int from){
             beginMoveRows(QModelIndex(), from, from, QModelIndex(), to + 1);
             endMoveRows();
             if(to > from && to > from + 1){
-                beginMoveRows(QModelIndex(), to - 1, to - 1, QModelIndex(), from); // right
+                beginMoveRows(QModelIndex(), to - 1, to - 1, QModelIndex(), from);
                 endMoveRows();
             }
             m_board.move(to - 1, from);
